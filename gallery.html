@@ -7,12 +7,19 @@
   <title>Document</title>
 </head>
 <body>
+
+  <input type="radio" name="filter" id="all" checked class="filter-input">
+  <input type="radio" name="filter" id="landscapes" class="filter-input">
+  <input type="radio" name="filter" id="portraits" class="filter-input">
+  <input type="radio" name="filter" id="architecture" class="filter-input">
+
   <header class="gallery-header">
     <h1>Interactive Gallery</h1>
     <nav class="filter-container">
-      <button class="filter-btn" onclick="filterGallery('landscapes')">Landscapes</button>
-      <button class="filter-btn" onclick="filterGallery('portraits')">Portraits</button>
-      <button class="filter-btn" onclick="filterGallery('architecture')">Architecture</button>
+      <label for="all" class="filter-btn">All</label>
+      <label for="landscapes" class="filter-btn">Landscapes</label>
+      <label for="portraits" class="filter-btn">Portraits</label>
+      <label for="architecture" class="filter-btn">Architecture</label>
     </nav>
   </header>
 

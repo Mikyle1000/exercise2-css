@@ -5,10 +5,14 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: #0f172a;
   color: #f8fafc;
   padding: 32px 16px;
+}
+
+.filter-input {
+  display: none;
 }
 
 .gallery-header{
@@ -35,7 +39,7 @@ body {
   border: 2px solid #334155;
   background-color: #1e293b;
   color: #94a3b8;
-  border-radius: 9999px;
+  border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -51,14 +55,21 @@ body {
   background-color: #3b82f6;
   color: #ffffff;
   border-color: #3b82f6;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
 .filter-btn.active {
   background-color: #3b82f6;
   color: #ffffff;
   border-color: #3b82f6;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+#all:checked ~ .gallery-header .filter-container label[for="all"],
+#landscapes:checked ~ .gallery-header .filter-container label[for="landscapes"],
+#portraits:checked ~ .gallery-header .filter-container label[for="portraits"],
+#architecture:checked ~ .gallery-header .filter-container label[for="architecture"] {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
 }
 
 .gallery-grid {
@@ -74,7 +85,67 @@ body {
   grid-template-rows: auto 1fr;
   position: relative;
   background-color: #1e293b;
-  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.5);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category-tag {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-description {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+#landscapes:checked ~ .gallery-grid .card:not(.landscapes),
+#portraits:checked ~ .gallery-grid .card:not(.portraits),
+#architecture:checked ~ .gallery-grid .card:not(.architecture) {
+  display: none;
 }
